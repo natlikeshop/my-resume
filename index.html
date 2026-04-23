@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nattaphong Nakuam | Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kanit:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', 'Kanit', sans-serif;
+            transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s;
+            overflow-x: hidden;
+        }
+
+        .dark body {
+            background-color: #030014;
+            color: #f1f5f9;
+        }
+
+        /* Animated Background Mesh */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.05) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(192, 132, 252, 0.05) 0px, transparent 50%);
+            animation: mesh-move 20s ease infinite alternate;
+        }
+
+        @keyframes mesh-move {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass {
+            background: rgba(15, 10, 30, 0.4);
+            border: 1px solid rgba(124, 58, 237, 0.15);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #6d28d9 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .text-gradient {
+            background: linear-gradient(135deg, #a78bfa 0%, #e879f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 3D Card Effect */
+        .card-3d {
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .card-3d:hover {
+            transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+            box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.25);
+        }
+
+        /* Journey Timeline Line */
+        .timeline-line {
+            background: linear-gradient(to bottom, #7c3aed, transparent);
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ddd6fe;
+            border-radius: 10px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4c1d95;
+        }
+    </style>
+</head>
+
+<body
+    class="text-slate-800 dark:text-slate-200 bg-[#fcfaff] dark:bg-[#030014] transition-colors duration-500 antialiased selection:bg-violet-100 dark:selection:bg-violet-900/30">
+
+    <div class="mesh-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gradient">N.Nakuam</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
+                <a href="#home" class="hover:text-violet-600 dark:hover:text-violet-400 transition">หน้าแรก</a>
+                <a href="#about" class="hover:text-violet-600 dark:hover:text-violet-400 transition">เกี่ยวกับ</a>
+                <a href="#skills" class="hover:text-violet-600 dark:hover:text-violet-400 transition">ทักษะ</a>
+                <a href="#experience" class="hover:text-violet-600 dark:hover:text-violet-400 transition">ประสบการณ์</a>
+                <a href="#projects" class="hover:text-violet-600 dark:hover:text-violet-400 transition">ผลงาน</a>
+                <button id="dark-mode-toggle"
+                    class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i data-lucide="moon" class="w-5 h-5 dark:text-yellow-400"></i>
+                </button>
+                <a href="#contact"
+                    class="px-4 py-2 bg-violet-600 text-white rounded-full hover:bg-violet-700 transition shadow-lg shadow-violet-200 dark:shadow-none">ติดต่อ</a>
+            </div>
+            <div class="flex items-center space-x-4 md:hidden">
+                <button id="dark-mode-toggle-mobile"
+                    class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+                    <i data-lucide="moon" class="w-5 h-5 dark:text-yellow-400"></i>
+                </button>
+                <button id="menu-btn" class="text-violet-600 focus:outline-none">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-violet-100 animate-fade-in">
+            <div class="px-6 py-8 flex flex-col space-y-6 text-center font-medium">
+                <a href="#home" class="mobile-link text-lg hover:text-violet-600 transition">หน้าแรก</a>
+                <a href="#about" class="mobile-link text-lg hover:text-violet-600 transition">เกี่ยวกับ</a>
+                <a href="#skills" class="mobile-link text-lg hover:text-violet-600 transition">ทักษะ</a>
+                <a href="#experience" class="mobile-link text-lg hover:text-violet-600 transition">ประสบการณ์</a>
+                <a href="#projects" class="mobile-link text-lg hover:text-violet-600 transition">ผลงาน</a>
+                <a href="#contact"
+                    class="mobile-link px-6 py-3 bg-violet-600 text-white rounded-xl hover:bg-violet-700 transition">ติดต่อ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+        <div
+            class="absolute top-20 left-10 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
+        </div>
+        <div
+            class="absolute bottom-20 right-10 w-64 h-64 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000">
+        </div>
+
+        <div class="max-w-4xl w-full text-center z-20 relative">
+            <h2 class="text-violet-600 font-semibold tracking-widest uppercase mb-4 text-sm md:text-base">
+                ยินดีต้อนรับสู่ Resume ของผม</h2>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                สวัสดีครับ ผมชื่อ <br>
+                <span class="text-gradient">นัฐพงษ์ นาคอ่วม</span>
+            </h1>
+            <p class="text-xl md:text-2xl font-medium mb-10 h-8">
+                <span id="typing-text" class="text-violet-600 dark:text-violet-400 typing-cursor"></span>
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact"
+                    class="px-8 py-4 bg-violet-600 text-white rounded-xl font-semibold hover:bg-violet-700 transition shadow-xl shadow-violet-200 dark:shadow-violet-900/40 flex items-center">
+                    เริ่มคุยงานกัน <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                </a>
+                <a href="#"
+                    class="px-8 py-4 glass border border-violet-100 dark:border-violet-500/30 text-violet-600 dark:text-violet-400 rounded-xl font-semibold hover:bg-violet-50 dark:hover:bg-violet-900/20 transition flex items-center">
+                    ดาวน์โหลด CV <i data-lucide="download" class="ml-2 w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-6 reveal">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="relative group">
+                <div
+                    class="w-full h-[550px] bg-violet-100 dark:bg-violet-900/10 rounded-[3rem] overflow-hidden shadow-2xl relative card-3d">
+                    <img src="C:\Users\com132\.gemini\antigravity\brain\30f78483-3878-4b0a-aa73-51a63eb4e22e\profile_picture_placeholder_1776912974988.png"
+                        alt="Nattaphong Nakuam"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-violet-900/20 to-transparent"></div>
+                </div>
+                <!-- Decorative element -->
+                <div
+                    class="absolute -top-6 -left-6 w-24 h-24 border-t-4 border-l-4 border-violet-500 rounded-tl-3xl opacity-50">
+                </div>
+                <div
+                    class="absolute -bottom-10 -right-4 glass p-10 rounded-[2.5rem] shadow-2xl hidden md:block border border-violet-100 dark:border-violet-500/20 card-3d">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-violet-100 dark:bg-violet-500/20 rounded-2xl">
+                            <i data-lucide="award" class="text-violet-600 w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-violet-600 dark:text-violet-400">3+</div>
+                            <div
+                                class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">
+                                Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span
+                    class="inline-block px-4 py-1.5 bg-violet-100 dark:bg-violet-500/10 text-violet-600 dark:text-violet-400 rounded-full text-xs font-bold uppercase tracking-widest mb-6">Discovery</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">ชื่อเล่น นัฐ (Nat)<br><span
+                        class="text-gradient">Minimalist Developer</span><br>ที่ใส่ใจทุกรายละเอียด</h2>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-10 text-lg">
+                    ผมเป็น Full-stack Developer ที่เชื่อว่า "ความซับซ้อนที่สวยงามคือความเรียบง่าย"
+                    งานของผมคือการเปลี่ยนไอเดียที่ยุ่งยากให้เป็นประสบการณ์ดิจิทัลที่ใช้งานง่าย
+                    ด้วยเทคนิคสมัยใหม่และสุนทรียศาสตร์แบบ Minimalist
+                </p>
+                <div
+                    class="grid grid-cols-2 gap-8 p-8 bg-white dark:bg-white/5 rounded-3xl border border-slate-100 dark:border-white/5 shadow-sm">
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-violet-50 dark:bg-violet-900/20 flex items-center justify-center mr-3">
+                                <i data-lucide="mail" class="w-4 h-4 text-violet-600"></i>
+                            </div>
+                            <span class="font-bold text-sm">อีเมล</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">nattaphong@example.com</p>
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-violet-50 dark:bg-violet-900/20 flex items-center justify-center mr-3">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-violet-600"></i>
+                            </div>
+                            <span class="font-bold text-sm">ที่อยู่</span>
+                        </div>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">กรุงเทพฯ, ประเทศไทย</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 px-6 bg-slate-50 dark:bg-[#05011a] reveal">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <h3 class="text-violet-600 dark:text-violet-400 font-bold mb-2">ความสามารถ</h3>
+            <h2 class="text-3xl md:text-4xl font-bold dark:text-white">เทคโนโลยีที่ผมเชี่ยวชาญ</h2>
+        </div>
+        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- Skill Cards -->
+            <div
+                class="glass p-8 rounded-3xl text-center hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-500 transform hover:-translate-y-2 group">
+                <div
+                    class="w-16 h-16 bg-violet-100 dark:bg-violet-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="code-2" class="text-violet-600 dark:text-violet-400"></i>
+                </div>
+                <h4 class="font-bold dark:text-white">Frontend</h4>
+                <p class="text-sm text-slate-500 dark:text-slate-400">HTML, CSS, Tailwind, React</p>
+            </div>
+            <div
+                class="glass p-8 rounded-3xl text-center hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-500 transform hover:-translate-y-2 group">
+                <div
+                    class="w-16 h-16 bg-violet-100 dark:bg-violet-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="server" class="text-violet-600 dark:text-violet-400"></i>
+                </div>
+                <h4 class="font-bold dark:text-white">Backend</h4>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Node.js, Express, PHP</p>
+            </div>
+            <div
+                class="glass p-8 rounded-3xl text-center hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-500 transform hover:-translate-y-2 group">
+                <div
+                    class="w-16 h-16 bg-violet-100 dark:bg-violet-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="database" class="text-violet-600 dark:text-violet-400"></i>
+                </div>
+                <h4 class="font-bold dark:text-white">Database</h4>
+                <p class="text-sm text-slate-500 dark:text-slate-400">MySQL, MongoDB, PostgreSQL</p>
+            </div>
+            <div
+                class="glass p-8 rounded-3xl text-center hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-500 transform hover:-translate-y-2 group">
+                <div
+                    class="w-16 h-16 bg-violet-100 dark:bg-violet-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="layout" class="text-violet-600 dark:text-violet-400"></i>
+                </div>
+                <h4 class="font-bold dark:text-white">Design</h4>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Figma, Adobe XD, UI/UX</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience" class="py-32 px-6 reveal">
+        <div class="max-w-6xl mx-auto text-center mb-20">
+            <span class="text-violet-600 dark:text-violet-400 font-bold tracking-widest uppercase text-xs">My
+                Journey</span>
+            <h2 class="text-4xl font-bold mt-4 dark:text-white">เส้นทางและความสำเร็จ</h2>
+        </div>
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+            <!-- Experience -->
+            <div class="space-y-8">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div
+                        class="w-12 h-12 bg-violet-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-violet-200 dark:shadow-none">
+                        <i data-lucide="briefcase"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold dark:text-white">ประสบการณ์ทำงาน</h3>
+                </div>
+                <div class="space-y-10 relative">
+                    <div class="absolute left-[23px] top-4 bottom-4 w-0.5 timeline-line opacity-20"></div>
+
+                    <div class="relative pl-16 group">
+                        <div
+                            class="absolute left-0 top-1 w-12 h-12 bg-white dark:bg-slate-900 border-2 border-violet-600 rounded-full z-10 flex items-center justify-center transition-transform group-hover:scale-110">
+                            <div class="w-3 h-3 bg-violet-600 rounded-full"></div>
+                        </div>
+                        <div
+                            class="glass p-8 rounded-3xl border border-slate-100 dark:border-white/5 shadow-sm group-hover:shadow-md transition-shadow">
+                            <span
+                                class="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest">2023
+                                - PRESENT</span>
+                            <h4 class="text-xl font-bold mt-2 dark:text-white">Senior Web Developer</h4>
+                            <p class="text-slate-500 dark:text-slate-400 mb-4">Tech Innovators Co., Ltd.</p>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                นำทีมพัฒนาโปรเจกต์ขนาดใหญ่ ออกแบบสถาปัตยกรรมซอฟต์แวร์ และให้คำปรึกษาด้านเทคนิคที่ทันสมัย
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-16 group">
+                        <div
+                            class="absolute left-0 top-1 w-12 h-12 bg-white dark:bg-slate-900 border-2 border-violet-300 dark:border-violet-800 rounded-full z-10 flex items-center justify-center transition-transform group-hover:scale-110">
+                            <div class="w-3 h-3 bg-violet-300 dark:bg-violet-800 rounded-full"></div>
+                        </div>
+                        <div
+                            class="glass p-8 rounded-3xl border border-slate-100 dark:border-white/5 shadow-sm group-hover:shadow-md transition-shadow">
+                            <span
+                                class="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-widest">2021
+                                - 2023</span>
+                            <h4 class="text-xl font-bold mt-2 dark:text-white">Full Stack Developer</h4>
+                            <p class="text-slate-500 dark:text-slate-400 mb-4">Digital Solutions Agency</p>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                                พัฒนาเว็บแอปพลิเคชันที่มีความซับซ้อนสูงด้วยเทคโนโลยี React และ Node.js</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="space-y-8">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div
+                        class="w-12 h-12 bg-purple-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-purple-200 dark:shadow-none">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold dark:text-white">ประวัติการศึกษา</h3>
+                </div>
+                <div class="space-y-10 relative">
+                    <div class="absolute left-[23px] top-4 bottom-4 w-0.5 timeline-line opacity-20 bg-purple-500"></div>
+
+                    <div class="relative pl-16 group">
+                        <div
+                            class="absolute left-0 top-1 w-12 h-12 bg-white dark:bg-slate-900 border-2 border-purple-600 rounded-full z-10 flex items-center justify-center transition-transform group-hover:scale-110">
+                            <div class="w-3 h-3 bg-purple-600 rounded-full"></div>
+                        </div>
+                        <div
+                            class="glass p-8 rounded-3xl border border-slate-100 dark:border-white/5 shadow-sm group-hover:shadow-md transition-shadow">
+                            <span
+                                class="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-widest">2017
+                                - 2021</span>
+                            <h4 class="text-xl font-bold mt-2 dark:text-white">วิทยาศาสตรบัณฑิต (วิทยาการคอมพิวเตอร์)
+                            </h4>
+                            <p class="text-slate-500 dark:text-slate-400 mb-4">มหาวิทยาลัยเทคโนโลยีพระจอมเกล้า...</p>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-bold italic">
+                                เกียรตินิยมอันดับ 1 (GPA 3.80)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 bg-slate-50 dark:bg-[#05011a] reveal">
+        <div class="max-w-6xl mx-auto text-center mb-16">
+            <h3 class="text-violet-600 dark:text-violet-400 font-bold mb-2">ผลงานล่าสุด</h3>
+            <h2 class="text-3xl md:text-4xl font-bold dark:text-white">โปรเจกต์ที่น่าสนใจ</h2>
+        </div>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <!-- Project Cards -->
+            <div
+                class="group bg-white dark:bg-slate-900/50 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl hover:shadow-violet-500/20 transition-all duration-500 border border-transparent dark:border-white/5">
+                <div class="h-56 bg-violet-200 dark:bg-violet-900/20 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-t from-violet-900/40 to-transparent"></div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-violet-600/20 backdrop-blur-sm">
+                        <span class="px-6 py-2 bg-white text-violet-600 rounded-full font-bold text-sm">ดูผลงาน</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-xl font-bold mb-2 dark:text-white">E-Commerce Modern</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">
+                        แพลตฟอร์มขายสินค้าออนไลน์ที่เน้นความเร็วและความง่ายในการใช้งาน</p>
+                    <a href="#"
+                        class="inline-flex items-center text-violet-600 dark:text-violet-400 font-bold hover:translate-x-2 transition">
+                        ดูรายละเอียด <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            <div
+                class="group bg-white dark:bg-slate-900/50 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl hover:shadow-violet-500/20 transition-all duration-500 border border-transparent dark:border-white/5">
+                <div class="h-56 bg-purple-200 dark:bg-purple-900/20 relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-purple-600/20 backdrop-blur-sm">
+                        <span class="px-6 py-2 bg-white text-purple-600 rounded-full font-bold text-sm">ดูผลงาน</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-xl font-bold mb-2 dark:text-white">AI Dashboard</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">ระบบจัดการข้อมูลและวิเคราะห์ด้วย AI
+                        พร้อมกราฟแสดงผลที่สวยงาม</p>
+                    <a href="#"
+                        class="inline-flex items-center text-violet-600 dark:text-violet-400 font-bold hover:translate-x-2 transition">
+                        ดูรายละเอียด <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            <div
+                class="group bg-white dark:bg-slate-900/50 rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl hover:shadow-violet-500/20 transition-all duration-500 border border-transparent dark:border-white/5">
+                <div class="h-56 bg-indigo-200 dark:bg-indigo-900/20 relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-indigo-600/20 backdrop-blur-sm">
+                        <span class="px-6 py-2 bg-white text-indigo-600 rounded-full font-bold text-sm">ดูผลงาน</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-xl font-bold mb-2 dark:text-white">Healthy App</h4>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6">
+                        แอปพลิเคชันดูแลสุขภาพที่ช่วยให้ผู้ใช้ติดตามการออกกำลังกายได้ง่ายๆ</p>
+                    <a href="#"
+                        class="inline-flex items-center text-violet-600 dark:text-violet-400 font-bold hover:translate-x-2 transition">
+                        ดูรายละเอียด <i data-lucide="chevron-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-white dark:bg-slate-950 reveal">
+        <div
+            class="max-w-6xl mx-auto bg-violet-600 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-2xl shadow-violet-200">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full -ml-32 -mb-32"></div>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 relative z-10">สนใจร่วมงานกับผม?</h2>
+            <p class="text-violet-100 mb-12 text-lg max-w-2xl mx-auto relative z-10">
+                ส่งข้อความหาผมได้ทุกเมื่อ ผมยินดีที่จะพูดคุยเกี่ยวกับโปรเจกต์ใหม่ๆ หรือเพียงแค่ทำความรู้จักกันครับ
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 relative z-10">
+                <a href="mailto:nattaphong@example.com"
+                    class="px-10 py-5 bg-white text-violet-600 rounded-2xl font-bold hover:bg-violet-50 transition shadow-xl flex items-center">
+                    <i data-lucide="mail" class="mr-2"></i> nattaphong@example.com
+                </a>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-14 h-14 bg-white/20 text-white rounded-2xl flex items-center justify-center hover:bg-white/30 transition backdrop-blur-sm">
+                        <i data-lucide="github"></i>
+                    </a>
+                    <a href="#"
+                        class="w-14 h-14 bg-white/20 text-white rounded-2xl flex items-center justify-center hover:bg-white/30 transition backdrop-blur-sm">
+                        <i data-lucide="linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-100 dark:border-slate-800 text-center text-slate-400 text-sm">
+        <p>&copy; 2026 Nattaphong Nakuam. สร้างด้วยความตั้งใจและ Tailwind CSS</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Ultra-Simple Typing Effect
+        const typeTarget = document.getElementById('typing-text');
+        const phrases = ["Web Developer", "Gamer", "Software Developer"];
+        let phraseIdx = 0;
+        let letterIdx = 0;
+        let isDeleting = false;
+
+        function performTyping() {
+            if (!typeTarget) return;
+
+            const phrase = phrases[phraseIdx];
+
+            if (isDeleting) {
+                letterIdx--;
+            } else {
+                letterIdx++;
+            }
+
+            typeTarget.innerText = phrase.substring(0, letterIdx);
+
+            let speed = isDeleting ? 50 : 150;
+
+            if (!isDeleting && letterIdx === phrase.length) {
+                isDeleting = true;
+                speed = 2000;
+            } else if (isDeleting && letterIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                speed = 500;
+            }
+
+            setTimeout(performTyping, speed);
+        }
+
+        // Reveal on Scroll
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        // Start typing and reveal
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.setAttribute('data-lucide', 'menu');
+            } else {
+                icon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons();
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.querySelector('i').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // Dark Mode Logic
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const darkModeToggleMobile = document.getElementById('dark-mode-toggle-mobile');
+        const html = document.documentElement;
+
+        function updateDarkModeIcon() {
+            const dt = document.getElementById('dark-mode-toggle');
+            const dtm = document.getElementById('dark-mode-toggle-mobile');
+            const html = document.documentElement;
+
+            [dt, dtm].forEach(btn => {
+                if (!btn) return;
+                const icon = btn.querySelector('i');
+                if (!icon) return;
+                if (html.classList.contains('dark')) {
+                    icon.setAttribute('data-lucide', 'sun');
+                } else {
+                    icon.setAttribute('data-lucide', 'moon');
+                }
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function toggleDarkMode() {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            updateDarkModeIcon();
+        }
+
+        if (darkModeToggle) darkModeToggle.addEventListener('click', toggleDarkMode);
+        if (darkModeToggleMobile) darkModeToggleMobile.addEventListener('click', toggleDarkMode);
+
+        // Check preference
+        if (localStorage.getItem('darkMode') === 'true' ||
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        }
+        updateDarkModeIcon();
+
+        // Initialize everything
+        function init() {
+            if (typeTarget) performTyping();
+            reveal();
+            updateDarkModeIcon();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+
+</html>
